@@ -1,19 +1,30 @@
 let sun;
-let mercry;
+let mercury;
 let venus;
 let earth;
 let mars;
-
+let jupiter;
+let saturn;
+let uranus;
+let neptune;
+let moon;
 
 new p5((p) => {
 	p.setup = () => {
-		p.createCanvas(800, 800);
+		p.createCanvas(1920, 1080);
 		p.angleMode(p.DEGREES);
 		p.frameRate(144);
 
-		sun = new Planets(400, 400, 150, "yellow", 10, 10); 
-		earth = new Planets(300, 300, 50, "blue", 200, 200);
-		mars = new Planets(250, 250, 30, "orange", -200, -200);
+		sun = new Planets(0, 0, 150, "yellow", 0, 0); 
+		mercury = new Planets(0, 0, 20, "gray", 120, 120);
+		venus = new Planets(0, 0, 40, "orange", 170, 170);
+		earth = new Planets(0, 0, 80, "blue", 250, 250);
+		moon = new Planets(0, 0, 20, "gray", 100, -100);
+		mars = new Planets(0, 0, 40, "orange", 350, 350);
+		jupiter = new Planets(0, 0, 150, "orange", 380, 380);
+		saturn = new Planets(0, 0, 80, "brown", 530, 530);
+		uranus = new Planets(0, 0, 80, "blue", 630, 630);
+		neptune = new Planets(0, 0, 80, "blue", 730, 730);
 	
 
 	}
@@ -32,8 +43,8 @@ new p5((p) => {
 			// this is hard coded i need it to my dynamic for each planet
 			// I realise the issue i just don't knwo how to fix it, i mean
 			// i could attempt to use translate()
-			this.x = this.rx * p.cos(p.frameCount * 1) + 400; // <-- I dont want these to server as the x and y values 
-			this.y = this.ry * p.sin(p.frameCount * 2) + 400;
+			this.x = this.rx * p.cos(p.frameCount * 0.2) + 950;
+			this.y = this.ry * p.sin(p.frameCount * 0.2) + 500;
 
 			// p.translate(this.rx, this.ry)
 			p.fill(this.c);
@@ -49,8 +60,15 @@ new p5((p) => {
 		p.background(0); 
 
 		sun.drawPlanets();
+		mercury.drawPlanets();
+		venus.drawPlanets();
 		earth.drawPlanets();
+		moon.drawPlanets();
 		mars.drawPlanets();
+		jupiter.drawPlanets();
+		saturn.drawPlanets();
+		uranus.drawPlanets();
+		neptune.drawPlanets();
 
 	}
 
