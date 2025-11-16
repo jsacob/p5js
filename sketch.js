@@ -3,12 +3,14 @@ let circle;
 new p5((p) => {
   p.setup = () => {
 
-    p.createCanvas(800, 800);
-	  
-	circle = new Ellipse(0,0,100,100);
-	
-  };
-  
+	let c = p.random(['red', 'blue', 'green']);
+
+	p.createCanvas(800, 800);
+	 
+	circle = new Circle(0,0,100,100);
+
+	p.fill(c)
+};
  // p.moving_circle = () => {
  //
  //  let x = 90 * p.cos(p.frameCount * 2) + 50;
@@ -17,7 +19,7 @@ new p5((p) => {
  //
  // };
 
- class Ellipse {
+ class Circle {
 	constructor(x, y, h, w) {
 		this.x = x;
 		this.y = y;
@@ -29,7 +31,6 @@ new p5((p) => {
 		let x = 100 * p.cos(p.frameCount * 0.2) + 400; 
 		let y = 100 * p.sin(p.frameCount * 0.4) + 400; 
 		p.circle(x, y, this.h, this.y);
-		
 		// console.log(x, y)
 	 }
 }
