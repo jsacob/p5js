@@ -9,10 +9,11 @@ new p5((p) => {
 	p.setup = () => {
 		p.createCanvas(800, 800);
 		p.angleMode(p.DEGREES);
+		p.frameRate(144);
 
-		sun = new Planets(400, 400, 150, "yellow", 200, 200); 
+		sun = new Planets(400, 400, 150, "yellow", 10, 10); 
 		earth = new Planets(300, 300, 50, "blue", 200, 200);
-		mars = new Planets(250, 250, 30, "orange", 200, 200);
+		mars = new Planets(250, 250, 30, "orange", -200, -200);
 	
 
 	}
@@ -31,9 +32,10 @@ new p5((p) => {
 			// this is hard coded i need it to my dynamic for each planet
 			// I realise the issue i just don't knwo how to fix it, i mean
 			// i could attempt to use translate()
-			// this.x = this.rx * p.cos(p.frameCount * 1) + 400;
-			// this.y = this.ry * p.sin(p.frameCount * 1) + 400;
+			this.x = this.rx * p.cos(p.frameCount * 1) + 400; // <-- I dont want these to server as the x and y values 
+			this.y = this.ry * p.sin(p.frameCount * 2) + 400;
 
+			// p.translate(this.rx, this.ry)
 			p.fill(this.c);
 			p.circle(this.x, this.y, this.d); 
 			
