@@ -5,8 +5,8 @@ new p5((p) => {
 
     p.createCanvas(800, 800);
 	  
-	circle = new Ellipse(100,100,100,100);
-
+	circle = new Ellipse(0,0,100,100);
+	
   };
   
  // p.moving_circle = () => {
@@ -26,10 +26,11 @@ new p5((p) => {
 	}
 
 	 show() {
-		let x = 50 * p.cos(p.frameCount * 0.1) + 50; 
-		let y = 50 * p.sin(p.frameCount * 0.2) + 50; 
+		let x = 100 * p.cos(p.frameCount * 0.2) + 400; 
+		let y = 100 * p.sin(p.frameCount * 0.4) + 400; 
 		p.circle(x, y, this.h, this.y);
-
+		
+		// console.log(x, y)
 	 }
 }
 
