@@ -3,13 +3,16 @@ let circle;
 new p5((p) => {
   p.setup = () => {
 
-	let c = p.random(['red', 'blue', 'green']);
-
 	p.createCanvas(800, 800);
-	 
-	circle = new Circle(0,0,100,100);
+	// let c = p.random(['red', 'blue', 'green', 'purple', 'pink']);
+	
+	p.strokeWeight(10);
+	p.stroke("white");
 
-	p.fill(c)
+	circle = new Circle(100, 100, 100, 100);
+
+	p.fill("#BE93D4");
+
 };
  // p.moving_circle = () => {
  //
@@ -27,17 +30,23 @@ new p5((p) => {
 		this.w = w;
 	}
 
-	 show() {
-		let x = 100 * p.cos(p.frameCount * 0.2) + 400; 
-		let y = 100 * p.sin(p.frameCount * 0.4) + 400; 
+	 circle1() {
+		let x = 100 * p.cos(p.frameCount * 0.01 * 2) + 400; 
+		let y = 100 * p.cos(p.frameCount * 0.03 * 2) + 400; 
+		p.circle(x, y, this.h, this.w);
+	 }
+
+	 circle2() {
+		let x = 100 * p.cos(p.frameCount * 0.03) + 400; 
+		let y = 100 * p.cos(p.frameCount * 0.01) + 400; 
 		p.circle(x, y, this.h, this.y);
-		// console.log(x, y)
 	 }
 }
 
  p.draw = () => {
     p.background(0);
-	circle.show();
+	circle.circle1();
+	circle.circle2();
 	// p.moving_circle();
   };
 });
