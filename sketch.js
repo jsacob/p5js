@@ -4,14 +4,13 @@ new p5((p) => {
   p.setup = () => {
 
 	p.createCanvas(800, 800);
-	// let c = p.random(['red', 'blue', 'green', 'purple', 'pink']);
-	
-	p.strokeWeight(10);
-	p.stroke("white");
-
 	circle = new Circle(100, 100, 100, 100);
 
-	p.fill("#BE93D4");
+	// coloring
+	let c = p.random(['red', 'blue', 'green']);
+	p.strokeWeight(10);
+	p.stroke("white");
+	p.fill(c);
 
 };
  // p.moving_circle = () => {
@@ -47,6 +46,8 @@ new p5((p) => {
     p.background(0);
 	circle.circle1();
 	circle.circle2();
+	
+	console.log(circle.circle2);
 	// p.moving_circle();
   };
 });
