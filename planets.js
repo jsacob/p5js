@@ -11,11 +11,12 @@ let moon;
 
 new p5((p) => {
 	p.setup = () => {
+
 		p.createCanvas(1920, 1920);
 		p.angleMode(p.DEGREES);
 		p.frameRate(144);
 
-		sun = new Planets(0, 0, 150, "yellow", 0, 0, 0); 
+		sun = new Planets(0, 0, 150, "yellow", 0, 0, 0) 
 		mercury = new Planets(0, 0, 20, "gray", 120, 120, 0.9);
 		venus = new Planets(0, 0, 40, "orange", 170, 170, 0.8);
 		earth = new Planets(0, 0, 80, "blue", 250, 250, 0.7);
@@ -24,11 +25,13 @@ new p5((p) => {
 		saturn = new Planets(0, 0, 80, "brown", 530, 530, 0.4);
 		uranus = new Planets(0, 0, 80, "blue", 630, 630, 0.3);
 		neptune = new Planets(0, 0, 80, "blue", 730, 730, 0.2);
+		moon = new Moons(0, 0, 80, "green", 730, 730, 0.2);
 	
 
 	}
+
 	class Planets {
-		constructor(x, y, d, c, rx, ry, s, n) {
+		constructor(x, y, d, c, rx, ry, s) {
 			this.x = x;
 			this.y = y;
 			this.d = d;
@@ -36,7 +39,6 @@ new p5((p) => {
 			this.rx = rx;
 			this.ry = ry;
 			this.s = s;
-			this.n = n;
 		}
 
 		drawPlanets() {
@@ -49,12 +51,22 @@ new p5((p) => {
 
 			// p.translate(this.rx, this.ry)
 			p.fill(this.c);
+
 			p.circle(this.x, this.y, this.d); 
 			
 			console.log(this.x, this.y)
 
 		}
+	}
 
+	class Moons extends Planets {
+		drawMoon() {
+
+			this.x = this.rx * p.cos(p.frameCount * 0.2 * this.s) + 950;
+			this.y = this.ry * p.sin(p.frameCount * 0.2 * this.s) + 900;
+			p.fill(this.c)
+			p.circle(this.x, this.y, this.d);
+		}
 	}
 
 	p.draw = () => {
@@ -69,6 +81,8 @@ new p5((p) => {
 		saturn.drawPlanets();
 		uranus.drawPlanets();
 		neptune.drawPlanets();
+
+		moon.drawMoon();
 
 	}
 
