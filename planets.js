@@ -68,7 +68,6 @@ new p5((p) => {
 
 })
 
-
 //     I need each planet to be "solo" in a senses i can choose which planet or moon to rotate around
 //     	any for example all the planets use the suns position to rotate around and then i can use each planet 
 //     	for the moon rotations in the same way 
