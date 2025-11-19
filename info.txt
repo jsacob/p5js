@@ -1,0 +1,19 @@
+F = G (m1*m2/r^2)
+
+where G is the constant of 6.6743 * 10^−11
+where m1 is the mass of the sun and m2 is the mass of venus
+where r^2 is the distance between both
+
+
+lets say m1 = 10kg and m2 = 20kg
+and r = 2 m
+
+so to solve
+
+10 * 20 = 200
+2^2 = 4
+200 / 4 = 50
+
+F = (6.6743 * 10^-11) * 50
+
+okay i don't fully understand how to implement this in code might take me awhile to make this work
