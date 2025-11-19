@@ -18,23 +18,18 @@ new p5((p) => {
     y: number;
     radius: number;
     diameter: number;
-
     speed: number;
     mass: number;
-
     static gravConstant = 6.674;
-
     color: string;
 
-    constructor(x = 0, y = 0, radius = 0, mass = 0, speed = 0, color = "") {
+    constructor(x = 0, y = 0, radius = 0, _mass = 0, speed = 0, color = "") {
       this.x = x;
       this.y = y;
       this.radius = radius;
       this.diameter = radius * 2;
-
       this.speed = speed;
       this.mass = 0;
-
       this.color = color;
     }
 
@@ -47,10 +42,7 @@ new p5((p) => {
   p.draw = () => {
     sun.x = p.cos(p.frameCount * sun.speed) + 300;
     sun.y = p.sin(p.frameCount * sun.speed) + 300;
-    
-    (gravForce * (mass1 * mass2) / 2);
-    
+
     sun.draw();
     mercury.draw();
-  };
 });
