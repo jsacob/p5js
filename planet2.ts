@@ -47,10 +47,10 @@ new p5((p) => {
   p.draw = () => {
     sun.x = p.cos(p.frameCount * sun.speed) + 300;
     sun.y = p.sin(p.frameCount * sun.speed) + 300;
-
+    
+    (gravForce * (mass1 * mass2) / 2);
+    
     sun.draw();
     mercury.draw();
   };
 });
-
-// .

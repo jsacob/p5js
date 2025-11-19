@@ -6,14 +6,20 @@ where r^2 is the distance between both
 
 
 lets say m1 = 10kg and m2 = 20kg
+
 and r = 2 m
+pytha theorm
 
 so to solve
 
 10 * 20 = 200
-2^2 = 4
-200 / 4 = 50
+distance between sun x and y and mercury x and y
 
 F = (6.6743 * 10^-11) * 50
 
+
+
 okay i don't fully understand how to implement this in code might take me awhile to make this work
+
+how to apply force formula
+when you get your outcome
