@@ -39,7 +39,7 @@ new p5((p) => {
     }
 
     drawPlanets() {
-      // this.rx = p.frameCount;
+      this.rx = p.frameCount;
       this.x = this.rx * p.cos(p.frameCount * this.speed) + 950;
       this.y = this.ry * p.sin(p.frameCount * this.speed) + 950;
 
