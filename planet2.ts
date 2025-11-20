@@ -67,10 +67,9 @@ new p5((p) => {
     let F = (Planet.gravConstant * (sun.mass * mercury.mass)) / totaldistance;
     console.log(F);
     // calculates the accleration putting the smaller object in rotation to the larger object
-    let a_x = F / mercury.mass;
-    let a_y = F / mercury.mass;
-    let v_x = mercury.velcoity_x + a_x * 0;
-    let v_y = mercury.velcoity_y + a_y * 0;
+    let a = F / mercury.mass;
+    let v_x = mercury.velcoity_x + a * 100;
+    let v_y = mercury.velcoity_y + a * 100;
 
     mercury.x = mercury.x + v_x;
     mercury.y = mercury.y + v_y;
