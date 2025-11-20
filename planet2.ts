@@ -39,29 +39,19 @@ new p5((p) => {
     }
   }
 
+  function distance(x1: number, y1: number) {
+    let sx: number = sun.x - x1;
+    let sy: number = sun.y - y1;
+    let px: number = Math.pow(sx, 2);
+    let py: number = Math.pow(sy, 2);
+    let add: number = px + py;
+    let sroot: number = Math.sqrt(add);
+    let totaldistance: number = Math.pow(sroot, 2);
+  }
+
   p.draw = () => {
-    // sun.x = p.cos(p.frameCount * sun.speed) + 300;
-    // sun.y = p.sin(p.frameCount * sun.speed) + 300;
-
-    // take the suns x and mercury x
-    // then suns y and mercury y
-    // square them first, then subtract them
-    // then add the two outcomes
-    // then square
-    //
-
-    let sx = sun.x - mercury.x;
-    let sy = sun.y - mercury.y;
-    let px = Math.pow(sx, 2);
-    let py = Math.pow(sy, 2);
-    let total = px + py;
-    let distance = Math.sqrt(total);
-    console.log(distance);
-
-    let F =
-      ((Planet.gravConstant * (sun.mass * mercury.mass)) / distance) * distance;
-    // console.log(sun.mass, mercury.mass);
-    console.log(F);
+    // let F = Planet.gravConstant * (sun.mass * mercury.mass);
+    // console.log(F);
 
     sun.draw();
     mercury.draw();
