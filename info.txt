@@ -45,3 +45,20 @@ D = 42.43
 
 10,000
 2500
+
+
+weight (N) is the gravitational force on an object
+Mass(kg) is the amount of matter in a body
+
+g = (GM/r^2) <-- only use if you are calcuating rotaton of one simple planet because the weight of the smaller planet doesn't matter... i think
+
+Keep in mind that weight and mass mean different things in Physics. If the weight of an object is given in N (Newtons), then divide it by 9.8 to get the equivalent mass
+
+
+refined approach
+
+- first calculate the distance between both objects d = sqrt((x2 - x1)^2 + (y-2 - y-1)^2)
+
+- get gravitational force F = G(m_1 * m_2) / r^2
+
+- get accleration a = F/m
