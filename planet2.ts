@@ -2,15 +2,15 @@ import p5 from "p5";
 
 let sun: any;
 let mercury: any;
+let sunMass = 4.545 * Math.pow(10, 5);
 
 new p5((p) => {
   p.setup = () => {
     p.createCanvas(800, 800);
     p.background(0);
-    p.angleMode(p.DEGREES);
 
-    sun = new Planet(200, 200, 50, 500000, 1, 1, "yellow");
-    mercury = new Planet(500, 500, 25, 200000, 0.2, 0.2, "grey");
+    sun = new Planet(500, 500, 50, 100000, 0, 0, "yellow");
+    mercury = new Planet(200, 200, 10, 50, 0, 0, "grey");
   };
 
   class Planet {
@@ -21,7 +21,7 @@ new p5((p) => {
     velocity_x: number;
     velocity_y: number;
     mass: number;
-    static gravConstant = 6.674 * Math.pow(10, -11);
+    static gravConstant = 6.674 * Math.pow(10, -5);
     color: string;
 
     constructor(
@@ -54,33 +54,33 @@ new p5((p) => {
   // }
 
   function physics(x2: number, x1: number, y2: number, y1: number) {
-    let s_x = x2 - x1;
-    let s_y = y2 - y1;
-    let sqrtx = Math.pow(s_x, 2);
-    let sqrty = Math.pow(s_y, 2);
-    let add = sqrtx + sqrty;
-    let sqrtadd = Math.sqrt(add);
+    let dx = x2 - x1;
+    let dy = y2 - y1;
+    let distance = Math.sqrt(dx * dx + dy * dy);
 
     let F =
-      (Planet.gravConstant * sun.mass * mercury.mass) / (sqrtadd * sqrtadd);
-
-    console.log(F);
+      (Planet.gravConstant * sun.mass * mercury.mass) / (distance * distance);
 
     let a = F / mercury.mass;
 
-    let v_x = mercury.velocity_x + a * 3600;
-    let v_y = mercury.velocity_y + a * 3600;
+    let v_x = mercury.velocity_x + a * 10000;
+    let v_y = mercury.velocity_y + a * 10000;
 
-    mercury.x = mercury.x + v_x;
-    mercury.y = mercury.y + v_y;
+    mercury.x += v_x;
+    mercury.y += v_y;
     // console.log(mercury.x);
+    console.log(F);
   }
 
   p.draw = () => {
+    p.clear();
+    p.background(40);
+
     physics(sun.x, mercury.x, sun.y, mercury.y);
     physics(mercury.x, sun.x, mercury.y, sun.y);
 
     sun.draw();
     mercury.draw();
+    // console.log(6.674 * Math.pow(10, -11));
   };
 });
