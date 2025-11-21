@@ -9,8 +9,8 @@ new p5((p) => {
     p.background(0);
     p.angleMode(p.DEGREES);
 
-    sun = new Planet(200, 200, 50, 5, 0, 0, "yellow");
-    mercury = new Planet(100, 100, 25, 1, 1, 1, "grey");
+    sun = new Planet(200, 200, 50, 500000, 1, 1, "yellow");
+    mercury = new Planet(500, 500, 25, 200000, 0.2, 0.2, "grey");
   };
 
   class Planet {
@@ -18,8 +18,8 @@ new p5((p) => {
     y: number;
     radius: number;
     diameter: number;
-    velcoity_x: number;
-    velcoity_y: number;
+    velocity_x: number;
+    velocity_y: number;
     mass: number;
     static gravConstant = 6.674 * Math.pow(10, -11);
     color: string;
@@ -37,8 +37,8 @@ new p5((p) => {
       this.y = y;
       this.radius = radius;
       this.diameter = radius * 2;
-      this.velcoity_x = velocity_x;
-      this.velcoity_y = velocity_y;
+      this.velocity_x = velocity_x;
+      this.velocity_y = velocity_y;
       this.mass = mass;
       this.color = color;
     }
@@ -53,33 +53,34 @@ new p5((p) => {
   //   console.log(totaldistance);
   // }
 
-  p.draw = () => {
-    // calculates distance between two objects
-    let sx: number = sun.x - mercury.x;
-    let sy: number = sun.y - mercury.y;
-    let px: number = Math.pow(sx, 2);
-    let py: number = Math.pow(sy, 2);
-    let add: number = px + py;
-    let sroot: number = Math.sqrt(add);
-    let totaldistance: number = Math.pow(sroot, 2);
+  function physics(x2: number, x1: number, y2: number, y1: number) {
+    let s_x = x2 - x1;
+    let s_y = y2 - y1;
+    let sqrtx = Math.pow(s_x, 2);
+    let sqrty = Math.pow(s_y, 2);
+    let add = sqrtx + sqrty;
+    let sqrtadd = Math.sqrt(add);
 
-    // calculates the gravtational force
-    let F = (Planet.gravConstant * (sun.mass * mercury.mass)) / totaldistance;
+    let F =
+      (Planet.gravConstant * sun.mass * mercury.mass) / (sqrtadd * sqrtadd);
+
     console.log(F);
-    // calculates the accleration putting the smaller object in rotation to the larger object
+
     let a = F / mercury.mass;
-    let v_x = mercury.velcoity_x + a * 100;
-    let v_y = mercury.velcoity_y + a * 100;
+
+    let v_x = mercury.velocity_x + a * 3600;
+    let v_y = mercury.velocity_y + a * 3600;
 
     mercury.x = mercury.x + v_x;
     mercury.y = mercury.y + v_y;
+    // console.log(mercury.x);
+  }
 
-    // console.log(mercury.velcoity_x, mercury.velcoity_y);
-    // console.log(a);
+  p.draw = () => {
+    physics(sun.x, mercury.x, sun.y, mercury.y);
+    physics(mercury.x, sun.x, mercury.y, sun.y);
+
     sun.draw();
     mercury.draw();
   };
 });
-
-// still not working completely not sure
-// why but ill fix it later
