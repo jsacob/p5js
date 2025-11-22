@@ -12,10 +12,3 @@ around each planet which i think should be pretty straight forward i hope so? i 
 also all my planets have a mass of 1 so the planet mass of the planets aren't completed yet
 
 
-wait i read somewhere that the kinematic formula im using v_i = v_0 + a*t isn't the best pick for velocity because it's used for velocity linearlly
-
-however i found two new formulas i could apply to get a much better result
-1. which will get us our velocity instead: v = sqrt(G*M_central) / r
-2  new acceleration formula: a = (G*M_central) / r^2
-
-now im not completely sure if these are correct but ill try anyways.
