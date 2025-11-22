@@ -2,16 +2,21 @@ import p5 from "p5";
 
 let sun: any;
 let mercury: any;
+let venus: any;
+
 let sunMass = 4.545 * Math.pow(10, 7);
-let mercuryMass = 2.245 * Math.pow(10, 7);
+//
+// let mercuryMass = 2.245 * Math.pow(10, 7);
+// let venusMass = 8.245 * Math.pow(10, 7);
 
 new p5((p) => {
   p.setup = () => {
-    p.createCanvas(1200, 1200);
+    p.createCanvas(1900, 1060);
     p.background(0);
 
-    sun = new Planet(500, 500, 100, sunMass, 0, 0, "yellow");
-    mercury = new Planet(300, 300, 20, mercuryMass, 2, -2, "grey");
+    sun = new Planet(920, 500, 50, sunMass, 0, 0, "yellow");
+    mercury = new Planet(600, 400, 20, 1, 2, -2, "grey");
+    venus = new Planet(200, 200, 30, 1, 2, -2, "orange");
   };
 
   class Planet {
@@ -50,50 +55,38 @@ new p5((p) => {
     }
   }
 
-  // function distance(x1: number, y1: number) {
-  //   console.log(totaldistance);
-  // }
-
-  function physics(x2: number, x1: number, y2: number, y1: number) {
-    let dx = x2 - x1;
-    let dy = y2 - y1;
+  function physicsRework(planet: Planet, sun: Planet) {
+    let dx = sun.x - planet.x;
+    let dy = sun.y - planet.y;
     let distance = Math.sqrt(dx * dx + dy * dy);
 
     let F =
-      (Planet.gravConstant * sun.mass * mercury.mass) / (distance * distance);
-    console.log(F);
+      (Planet.gravConstant * sun.mass * planet.mass) / (distance * distance);
 
     let F_x = F * (dx / distance);
     let F_y = F * (dy / distance);
 
-    let A_x = F_x / mercury.mass;
-    let A_y = F_y / mercury.mass;
-    // console.log(A_x);
+    let A_x = F_x / planet.mass;
+    let A_y = F_y / planet.mass;
 
     let dt = 1;
-    mercury.velocity_x += A_x * dt;
-    mercury.velocity_y += A_y * dt;
 
-    mercury.x += mercury.velocity_x * dt;
-    mercury.y += mercury.velocity_y * dt;
+    planet.velocity_x += A_x * dt;
+    planet.velocity_y += A_y * dt;
 
-    // console.log("F_x:", F_x, "F_y:", F_y);
-    // console.log("Mercury position: ", mercury.x, mercury.y);
-    // console.log("Mercury velocity: ", mercury.velocity_x, mercury.velocity_y);
-    // mercury.x += v_x;
-    // mercury.y += v_y;
-    // console.log("X: ", (mercury.x += v_x));
-    // console.log("Y: ", (mercury.y += v_y));
+    planet.x += planet.velocity_x * dt;
+    planet.y += planet.velocity_y * dt;
   }
 
   p.draw = () => {
     p.clear();
     p.background(40);
 
-    physics(sun.x, mercury.x, sun.y, mercury.y);
+    physicsRework(mercury, sun);
+    physicsRework(venus, sun);
 
     sun.draw();
     mercury.draw();
-    // console.log(6.674 * Math.pow(10, -11));
+    venus.draw();
   };
 });
