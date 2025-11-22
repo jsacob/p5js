@@ -12,13 +12,13 @@ let sunMass = 4.545 * Math.pow(10, 13);
 
 new p5((p) => {
   p.setup = () => {
-    p.createCanvas(1900, 1060);
+    p.createCanvas(1900, 1060, p.WEBGL);
     p.background(0);
 
-    sun = new Planet(920, 500, 50, sunMass, 0, 0, "yellow");
-    mercury = new Planet(700, 400, 20, 1, 2, -2, "grey");
-    venus = new Planet(600, 550, 30, 1, 2, -2, "orange");
-    earth = new Planet(800, 800, 40, 1, 2, -2, "green");
+    sun = new Planet(0, 0, 50, sunMass, 0, 0, "yellow");
+    mercury = new Planet(150, 150, 20, 1, 0, 0, "grey");
+    venus = new Planet(200, 200, 30, 1, 2, -2, "orange");
+    earth = new Planet(250, 250, 40, 1, 1, -1, "green");
   };
 
   class Planet {
@@ -62,22 +62,26 @@ new p5((p) => {
     let dy = sun.y - planet.y;
     let distance = Math.sqrt(dx * dx + dy * dy);
 
-    let F =
+    let Force =
       (Planet.gravConstant * sun.mass * planet.mass) / (distance * distance);
 
-    let F_x = F * (dx / distance);
-    let F_y = F * (dy / distance);
+    let Force_x = Force * (dx / distance);
+    let Force_y = Force * (dy / distance);
 
-    let A_x = F_x / planet.mass;
-    let A_y = F_y / planet.mass;
+    let Acceleration_x = Force_x / planet.mass;
+    let Acceleration_y = Force_y / planet.mass;
+
+    // let Velocity_x = Math.sqrt((Planet.gravConstant * sun.mass) / distance);
+    // let Velocity_y = Math.sqrt((Planet.gravConstant * sun.mass) / distance);
+    // let Acceleration_x = Math.pow(Velocity_x, 2) / distance;
+    // let Acceleration_y = Math.pow(Velocity_y, 2) / distance;
 
     let dt = 1;
+    planet.velocity_x += Acceleration_x * dt;
+    planet.velocity_y += Acceleration_y * dt;
 
-    planet.velocity_x += A_x * dt;
-    planet.velocity_y += A_y * dt;
-
-    planet.x += planet.velocity_x * dt;
-    planet.y += planet.velocity_y * dt;
+    planet.x += planet.velocity_x;
+    planet.y += planet.velocity_y;
   }
 
   p.draw = () => {
