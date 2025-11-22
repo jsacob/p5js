@@ -1,0 +1,9 @@
+okay i thought the rotation was wrong at first but according to
+keplers first law the planets don't revolve in a perfect cirular pattern
+but in an elliptical orbit so that makes me think this is competely fine
+
+on the other node if i remove the velocity the planets fall directly
+into the sun which is another good sign that I implemented this correctly
+
+also I need to learn how to implement collision and moons that can rotate
+around each planet which i think should be pretty straight forward i hope so? i don't know.
