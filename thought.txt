@@ -7,3 +7,6 @@ into the sun which is another good sign that I implemented this correctly
 
 also I need to learn how to implement collision and moons that can rotate
 around each planet which i think should be pretty straight forward i hope so? i don't know.
+
+
+.
