@@ -9,4 +9,4 @@ also I need to learn how to implement collision and moons that can rotate
 around each planet which i think should be pretty straight forward i hope so? i don't know.
 
 
-.
+also all my planets have a mass of 1 so the planet mass of the planets aren't completed yet

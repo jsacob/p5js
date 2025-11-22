@@ -18,7 +18,7 @@ new p5((p) => {
     sun = new Planet(920, 500, 50, sunMass, 0, 0, "yellow");
     mercury = new Planet(700, 400, 20, 1, 2, -2, "grey");
     venus = new Planet(600, 550, 30, 1, 2, -2, "orange");
-    earth = new Planet(800, 800, 40, 1, 0, 0, "green");
+    earth = new Planet(800, 800, 40, 1, 2, -2, "green");
   };
 
   class Planet {
