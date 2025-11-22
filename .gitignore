@@ -1,1 +1,11 @@
 node_modules/
+planet.js
+package.json
+package-lock.json
+script.js
+sketch.js
+tsconfig.json
+newFile.ts
+info.txt
+example.typ
+bun.lock
