@@ -12,3 +12,4 @@ around each planet which i think should be pretty straight forward i hope so? i 
 also all my planets have a mass of 1 so the planet mass of the planets aren't completed yet
 
 
+This just doesn't work the way i want it to work and im not completely sure how get to the point i want to be.

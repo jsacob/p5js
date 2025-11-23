@@ -5,8 +5,13 @@ let mercury: any;
 let venus: any;
 let earth: any;
 let mars: any;
+let jupiter: any;
+let saturn: any;
+let uranus: any;
+let neptune: any;
+let pluto: any;
 
-let sunMass = 4.545 * Math.pow(10, 13);
+let sunMass = 8.545 * Math.pow(10, 13);
 
 // let mercuryMass = 2.245 * Math.pow(10, 7);
 // let venusMass = 8.245 * Math.pow(10, 7);
@@ -16,11 +21,16 @@ new p5((p) => {
     p.createCanvas(1900, 1060, p.WEBGL);
     p.background(0);
 
-    sun = new Planet(0, 0, 50, sunMass, 0, 0, "yellow");
-    mercury = new Planet(150, 150, 20, 1, 1.5, -2.5, "grey");
-    venus = new Planet(200, 200, 30, 1, 2, -2, "orange");
-    earth = new Planet(250, 250, 40, 1, 1, -1, "green");
-    mars = new Planet(350, 350, 20, 1, 1, -1, "orange");
+    sun = new Planet(0, 0, 80, sunMass, 0, 0, "#FCAF3F");
+    mercury = new Planet(150, 150, 10, 1, 2, -5, "#B7B8B9");
+    venus = new Planet(220, 220, 20, 1, 2, -4, "#FFC649");
+    earth = new Planet(220, 220, 30, 1, 1, -2, "#346C27");
+    // mars = new Planet(-350, 350, 20, 1, 0, 0, "#E27B58");
+    // jupiter = new Planet(400, 400, 50, 1, 0, 0, "#C88B3A");
+    // saturn = new Planet(450, -450, 40, 1, 0, 0, "#C5AB6E");
+    // uranus = new Planet(-400, -500, 32, 1, 0, 0, "#B2D6DB");
+    // neptune = new Planet(-500, 500, 30, 1, 0, 0, "#2990B5");
+    // pluto = new Planet(550, -550, 5, 1, 0, 0, "#34acb1");
   };
 
   class Planet {
@@ -56,6 +66,7 @@ new p5((p) => {
     draw() {
       p.fill(this.color);
       p.circle(this.x, this.y, this.diameter);
+      p.fill(0);
     }
   }
 
@@ -70,33 +81,42 @@ new p5((p) => {
     let unit_x = diffx / distance;
     let unit_y = diffy / distance;
 
-    let acceleration = Force / planet.mass;
+    let Fx = Force * unit_x;
+    let Fy = Force * unit_y;
 
-    let acceleration_x = acceleration * unit_x;
-    let acceleration_y = acceleration * unit_y;
+    let ax = Fx / planet.mass;
+    let ay = Fy / planet.mass;
 
-    let dt = 0.5;
-    planet.velocity_x += acceleration_x * dt;
-    planet.velocity_y += acceleration_y * dt;
+    let dt = 1;
+    planet.velocity_x += ax * dt;
+    planet.velocity_y += ay * dt;
 
-    planet.x += planet.velocity_x * dt;
-    planet.y += planet.velocity_y * dt;
+    planet.x += planet.velocity_x;
+    planet.y += planet.velocity_y;
   }
 
   p.draw = () => {
     p.clear();
-    p.background(255);
 
     physicsRework(mercury, sun);
     physicsRework(venus, sun);
     physicsRework(earth, sun);
-    physicsRework(mars, sun);
+    // physicsRework(mars, sun);
+    // physicsRework(jupiter, sun);
+    // physicsRework(saturn, sun);
+    // physicsRework(uranus, sun);
+    // physicsRework(neptune, sun);
+    // physicsRework(pluto, sun);
 
-    console.log(mercury.x, mercury.y);
     sun.draw();
     mercury.draw();
     venus.draw();
     earth.draw();
-    mars.draw();
+    // mars.draw();
+    // jupiter.draw();
+    // saturn.draw();
+    // uranus.draw();
+    // neptune.draw();
+    // pluto.draw();
   };
 });
