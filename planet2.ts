@@ -18,7 +18,7 @@ let sunMass = 8.545 * Math.pow(10, 13);
 
 new p5((p) => {
   p.setup = () => {
-    p.createCanvas(2200, 1080, p.WEBGL);
+    p.createCanvas(3800, 2080, p.WEBGL);
     p.background(0);
 
     sun = new Planet(0, 0, 80, 100000, 0, 0, "#FCAF3F");
@@ -27,10 +27,10 @@ new p5((p) => {
     earth = new Planet(260, 260, 30, 1, 3, -4, "#346C27");
     mars = new Planet(300, 300, 20, 1, 3, -4, "#E27B58");
     jupiter = new Planet(400, 400, 50, 1, 2.5, -3.5, "#C88B3A");
-    // saturn = new Planet(450, -450, 40, 1, 0, 0, "#C5AB6E");
-    // uranus = new Planet(-400, -500, 32, 1, 0, 0, "#B2D6DB");
-    // neptune = new Planet(-500, 500, 30, 1, 0, 0, "#2990B5");
-    // pluto = new Planet(550, -550, 5, 1, 0, 0, "#34acb1");
+    saturn = new Planet(450, 450, 40, 1, 2.5, -3.2, "#C5AB6E");
+    uranus = new Planet(500, 500, 32, 1, 2.5, -3.2, "#B2D6DB");
+    neptune = new Planet(550, 550, 30, 1, 2.5, -3.2, "#2990B5");
+    pluto = new Planet(560, 560, 5, 1, 2.5, -3.2, "#34acb1");
   };
 
   class Planet {
@@ -106,10 +106,10 @@ new p5((p) => {
     physicsRework(earth, sun);
     physicsRework(mars, sun);
     physicsRework(jupiter, sun);
-    // physicsRework(saturn, sun);
-    // physicsRework(uranus, sun);
-    // physicsRework(neptune, sun);
-    // physicsRework(pluto, sun);
+    physicsRework(saturn, sun);
+    physicsRework(uranus, sun);
+    physicsRework(neptune, sun);
+    physicsRework(pluto, sun);
 
     sun.draw();
     mercury.draw();
@@ -117,9 +117,9 @@ new p5((p) => {
     earth.draw();
     mars.draw();
     jupiter.draw();
-    // saturn.draw();
-    // uranus.draw();
-    // neptune.draw();
-    // pluto.draw();
+    saturn.draw();
+    uranus.draw();
+    neptune.draw();
+    pluto.draw();
   };
 });
