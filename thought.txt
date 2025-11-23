@@ -13,3 +13,5 @@ also all my planets have a mass of 1 so the planet mass of the planets aren't co
 
 
 This just doesn't work the way i want it to work and im not completely sure how get to the point i want to be.
+
+okay i added accleration for the sun to the planets now the planets mass have effect on how it all works
