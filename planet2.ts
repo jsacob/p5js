@@ -11,26 +11,32 @@ let uranus: any;
 let neptune: any;
 let pluto: any;
 
-let sunMass = 8.545 * Math.pow(10, 13);
-
-// let mercuryMass = 2.245 * Math.pow(10, 7);
-// let venusMass = 8.245 * Math.pow(10, 7);
+let sunMass = 1.9885e30;
+let mercuryMass = 3.3011e23;
+let venusMass = 4.8675e24;
+let earthMass = 5.9724e24;
+let marsMass = 6.4717e23;
+let jupiterMass = 1.898187e27;
+let saturnMass = 5.68317e26;
+let uranusMass = 8.6813e25;
+let neptuneMass = 1.02413e26;
+let plutoMass = 1.3025e22;
 
 new p5((p) => {
   p.setup = () => {
-    p.createCanvas(3800, 2080, p.WEBGL);
+    p.createCanvas(1920, 1080, p.WEBGL);
     p.background(0);
 
-    sun = new Planet(0, 0, 80, 100000, 0, 0, "#FCAF3F");
-    mercury = new Planet(150, 150, 10, 1, 4, -4, "#B7B8B9");
-    venus = new Planet(250, 250, 20, 1, 2, -4, "#FFC649");
-    earth = new Planet(260, 260, 30, 1, 3, -4, "#346C27");
-    mars = new Planet(300, 300, 20, 1, 3, -4, "#E27B58");
-    jupiter = new Planet(400, 400, 50, 1, 2.5, -3.5, "#C88B3A");
-    saturn = new Planet(450, 450, 40, 1, 2.5, -3.2, "#C5AB6E");
-    uranus = new Planet(500, 500, 32, 1, 2.5, -3.2, "#B2D6DB");
-    neptune = new Planet(550, 550, 30, 1, 2.5, -3.2, "#2990B5");
-    pluto = new Planet(560, 560, 5, 1, 2.5, -3.2, "#34acb1");
+    sun = new Planet(0, 0, 50, sunMass, 0, 0, "#FCAF3F");
+    mercury = new Planet(50, 50, 10, mercuryMass, 0, 0, "#B7B8B9");
+    venus = new Planet(100, 100, 20, venusMass, 2, -4, "#FFC649");
+    earth = new Planet(150, 150, 30, earthMass, 3, -4, "#346C27");
+    mars = new Planet(200, 200, 20, marsMass, 3, -4, "#E27B58");
+    jupiter = new Planet(250, 250, 50, jupiterMass, 2.5, -3.5, "#C88B3A");
+    saturn = new Planet(300, 300, 40, saturnMass, 2.5, -3.2, "#C5AB6E");
+    uranus = new Planet(350, 350, 32, uranusMass, 2.5, -3.2, "#B2D6DB");
+    neptune = new Planet(400, 400, 30, neptuneMass, 2.5, -3.2, "#2990B5");
+    pluto = new Planet(450, 450, 5, plutoMass, 2.5, -3.2, "#34acb1");
   };
 
   class Planet {
@@ -70,7 +76,7 @@ new p5((p) => {
   }
 
   function physicsRework(planet: Planet, sun: Planet) {
-    let G = 0.1;
+    let G = 6.674e-11;
     let t = 1;
 
     let diffx = sun.x - planet.x;
@@ -101,15 +107,20 @@ new p5((p) => {
   p.draw = () => {
     p.clear();
 
-    physicsRework(mercury, sun);
-    physicsRework(venus, sun);
-    physicsRework(earth, sun);
-    physicsRework(mars, sun);
-    physicsRework(jupiter, sun);
-    physicsRework(saturn, sun);
-    physicsRework(uranus, sun);
-    physicsRework(neptune, sun);
-    physicsRework(pluto, sun);
+    const planets = [
+      mercury,
+      venus,
+      earth,
+      mars,
+      jupiter,
+      saturn,
+      uranus,
+      neptune,
+    ];
+
+    planets.forEach((planet) => {
+      physicsRework(planet, sun);
+    });
 
     sun.draw();
     mercury.draw();
